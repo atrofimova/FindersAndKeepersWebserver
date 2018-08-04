@@ -83,6 +83,7 @@ io.on('connect', function(socket){
 	});
 
 	socket.on('checkAnswers', function(json) {
+		console.log('checking answers')
 		var k = 0;
 		id = ID;
 		var item = {};
@@ -110,8 +111,10 @@ io.on('connect', function(socket){
 
 		if (k>1) {
 			socket.emit('nope');
+			console.log('nope');
 		} else {
 			socket.emit('yep');
+			console.log('yep');
 		}
 
 	});
