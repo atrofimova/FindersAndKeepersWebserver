@@ -109,7 +109,7 @@ io.on('connect', function(socket){
 			k = k+1;
 		}
 
-		if (k>1) {
+		if (k>0) {
 			socket.emit('yep');
 			console.log(k);
 		} else {
