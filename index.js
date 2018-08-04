@@ -22,7 +22,8 @@ io.on('connect', function(socket){
 	console.log("User connected "+socket.id);
 
 	socket.on('create', function(){
-		var st = "1";
+		var st = "0";
+		console.log("close it");
 	});
 	socket.on('picture', function(data){
 		newItem["picture"] =  data;
@@ -123,6 +124,7 @@ io.on('connect', function(socket){
 	socket.on('collect', function(){
 		newItem = {};
 		var st = "1";
+		console.log("open it");
 	})
 });
 
