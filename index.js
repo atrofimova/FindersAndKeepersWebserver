@@ -7,7 +7,7 @@ var fs = require("fs");
 // Mongodb setup
 
 var newItem = {};
-
+console.log(newItem);
 
 var contents = fs.readFileSync("dummy.json");
 var jsonContent = JSON.parse(contents);
@@ -59,6 +59,25 @@ io.on('connect', function(socket){
 			console.log('app asked for a picture');
 			socket.emit("setImage", newItem.picture);
 		}
+	});
+
+	socket.on('getQuestions', function(id){
+		var item = {};
+		if (id =="0") {
+			item = newItem;
+		}
+
+		if (id =="1") {
+			item = jsonContent.items[0];
+		}
+
+		if (id =="2") {
+			item = jsonContent.items[0];
+		}
+
+		socket.emit('q1', item.q1);
+		socket.emit('q2', item.q2);
+		socket.emit('q3', item.q3);
 	});
 
 	socket.on('collected', function(){
