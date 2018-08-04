@@ -56,6 +56,7 @@ io.on('connect', function(socket){
 		if (newItem == 0){
 			//
 		} else {
+			console.log('app asked for a picture');
 			socket.emit("setImage", newItem.picture);
 		}
 	});
