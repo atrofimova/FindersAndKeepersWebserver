@@ -18,6 +18,7 @@
   "homepage": "https://github.com/atrofimova/test#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "mongoose": "^5.2.6",
     "socket.io": "^2.1.1"
   }
 }
