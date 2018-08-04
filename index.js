@@ -24,6 +24,7 @@ io.on('connect', function(socket){
 	});
 	socket.on('picture', function(data){
 		newItem["picture"] =  data;
+		console.log(newItem.picture);
 
 	});
 	socket.on('id', function(data){
