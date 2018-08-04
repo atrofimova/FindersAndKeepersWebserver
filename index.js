@@ -2,6 +2,7 @@ var app=require('express')();
 var http =require('http').Server(app);
 var io=require('socket.io')(http);
 var fs = require("fs");
+var st = "0";
 
 //-------------------------------------------------------------------------//
 // Mongodb setup
@@ -21,7 +22,7 @@ io.on('connect', function(socket){
 	console.log("User connected "+socket.id);
 
 	socket.on('create', function(){
-
+		var st = "1";
 	});
 	socket.on('picture', function(data){
 		newItem["picture"] =  data;
@@ -119,9 +120,29 @@ io.on('connect', function(socket){
 
 	});
 
-	socket.on('collected', function(){
+	socket.on('collect', function(){
 		newItem = {};
+		var st = "1";
 	})
+});
+
+// the box
+app.get('/status', function (req, res){
+	res.send(st);
+
+});
+
+//for server to know if it was done
+app.post('/boxlocked', function (req, res){
+
+	console.log('the box is locked. well done.');
+	// console.log(req);
+	// const body = req.body.Body;
+
+});
+
+app.post('/boxunlocked', function (req, res){
+	console.log('the box is unlocked. well done.');
 });
 
 http.listen('3000', function(){
