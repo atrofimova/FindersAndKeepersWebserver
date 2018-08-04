@@ -2,7 +2,7 @@ var app=require('express')();
 var http =require('http').Server(app);
 var io=require('socket.io')(http);
 var fs = require("fs");
-var st = "0";
+var st = "1";
 
 //-------------------------------------------------------------------------//
 // Mongodb setup
