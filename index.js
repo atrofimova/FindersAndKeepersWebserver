@@ -6,7 +6,7 @@ var fs = require("fs");
 //-------------------------------------------------------------------------//
 // Mongodb setup
 
-var newItem;
+var newItem = {};
 
 
 var contents = fs.readFileSync("dummy.json");
@@ -60,7 +60,7 @@ io.on('connect', function(socket){
 	});
 
 	socket.on('collected', function(){
-		newItem = 0;
+		newItem = {};
 	})
 });
 
