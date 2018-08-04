@@ -11,6 +11,7 @@ console.log(newItem);
 
 var contents = fs.readFileSync("dummy.json");
 var jsonContent = JSON.parse(contents);
+var ID;
 // Compile model from schema
 
 
@@ -53,7 +54,7 @@ io.on('connect', function(socket){
 	});
 
 	socket.on('getNewItem', function(){
-		if (newItem == 0){
+		if (newItem == {}){
 			//
 		} else {
 			console.log('app asked for a picture');
@@ -62,6 +63,7 @@ io.on('connect', function(socket){
 	});
 
 	socket.on('getQuestions', function(id){
+		ID = id;
 		var item = {};
 		if (id =="0") {
 			item = newItem;
@@ -72,12 +74,46 @@ io.on('connect', function(socket){
 		}
 
 		if (id =="2") {
-			item = jsonContent.items[0];
+			item = jsonContent.items[1];
 		}
 
 		socket.emit('q1', item.q1);
 		socket.emit('q2', item.q2);
 		socket.emit('q3', item.q3);
+	});
+
+	socket.on('checkAnswers', function(json) {
+		var k = 0;
+		id = ID;
+		var item = {};
+		if (id =="0") {
+			item = newItem;
+		}
+
+		if (id =="1") {
+			item = jsonContent.items[0];
+		}
+
+		if (id =="2") {
+			item = jsonContent.items[1];
+		}
+
+		if (json.a1 == item.a1){
+			k = k+1;
+		}
+		if (json.a2 == item.a2){
+			k = k+1;
+		}
+		if (json.a3 == item.a3){
+			k = k+1;
+		}
+
+		if (k>1) {
+			socket.emit('nope');
+		} else {
+			socket.emit('yep');
+		}
+
 	});
 
 	socket.on('collected', function(){
