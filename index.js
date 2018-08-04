@@ -23,28 +23,28 @@ io.on('connect', function(socket){
 
 	});
 	socket.on('picture', function(data){
-		newItem.picture =  data;
+		newItem["picture"] =  data;
 
 	});
 	socket.on('id', function(data){
 	});
 	socket.on('q1', function(data){
-		newItem.q1 = data;
+		newItem["q1"] = data;
 	});
 	socket.on('q2', function(data){
-		newItem.q2 = data;
+		newItem["q2"] = data;
 	});
 	socket.on('q3', function(data){
-		newItem.q3 = data;
+		newItem["q3"] = data;
 	});
 	socket.on('a1', function(data){
-		newItem.a1 = data;
+		newItem["a1"] = data;
 	});
 	socket.on('a2', function(data){
-		newItem.a2 = data;
+		newItem["a2"] = data;
 	});
 	socket.on('a3', function(data){
-		newItem.a3 = data;
+		newItem["a3"] = data;
 	});
 
 	socket.on('disconnect', function(){
