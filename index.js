@@ -111,10 +111,10 @@ io.on('connect', function(socket){
 
 		if (k>1) {
 			socket.emit('yep');
-			console.log('k');
+			console.log(k);
 		} else {
 			socket.emit('nope');
-			console.log('k');
+			console.log(k);
 		}
 
 	});
